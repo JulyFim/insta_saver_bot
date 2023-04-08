@@ -26,7 +26,8 @@ async def insta(message: types.Message):
         # print(result)
         await message.answer_photo(photo=result.get('image'))
         await message.answer(result.get('caption'))
-    except (Exception, ExceptionGroup, BaseException, BaseExceptionGroup):
+    except Exception as ex:
+        print('error in file url')
         await message.answer(
             f"Please make sure the username is correct and try again!\n\n"
             f"Убедитесь, что имя пользователя указано правильно, и повторите попытку.!")
