@@ -13,10 +13,10 @@ class Database:
 
     async def create(self):
         self.pool = await asyncpg.create_pool(
-            user=config.DB_USER,
-            password=config.DB_PASS,
-            host=config.DB_HOST,
-            database=config.DB_NAME,
+            user=config.PGUSER,
+            password=config.PGPASSWORD,
+            host=config.DATABASEHOST,
+            database=config.PGDATABASE,
         )
 
     async def execute(
@@ -43,7 +43,7 @@ class Database:
 
     async def create_table_users(self):
         sql = """
-        CREATE TABLE IF NOT EXISTS Users (
+        CREATE TABLE Users (
         id SERIAL PRIMARY KEY,
         full_name VARCHAR(255) NOT NULL,
         username varchar(255) NULL,
