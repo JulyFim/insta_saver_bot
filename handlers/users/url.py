@@ -29,7 +29,8 @@ async def insta(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.TYPING)
         await message.answer_video(video=result.get('media'))
         await message.answer(title)
-    except (Exception, ExceptionGroup, BaseException, BaseExceptionGroup):
+    except Exception as ex:
+        print('error in file profile', ex)
         await message.answer(
             f"Please make sure the link is correct and try again!\n\n"
             f"Убедитесь, что ссылка указаны правильно, и повторите попытку!")
